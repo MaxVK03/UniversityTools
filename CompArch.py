@@ -70,7 +70,7 @@ def BinaryToLC3(binNumIn, Typex):
         print("R" + str(binaryToDecimal(int(str(fullCom)[7:10]))), end=' ')
 
     elif ins == 10:
-        print("LDI", end='')
+        print("LDI ", end='')
         print("R" + str(binaryToDecimal(int(str(fullCom)[4:7]))), end=' ')
         print("#" + str(twosCom_binDec(fullCom[8:16], 9)))
 
@@ -124,6 +124,7 @@ def HexToLC3():
 def printCompArch():
     print("1. -- Convert binary to LC3 instruction --")
     print("2. -- Convert hex to LC3 instruction --")
+    print()
     subChoice = input('Please enter your subject: ')
 
     if subChoice == '1':
