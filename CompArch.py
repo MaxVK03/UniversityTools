@@ -21,6 +21,19 @@ def BinaryToLC3(binNumIn, Typex):
         elif int(str(fullCom)[10:11]) == 1:
             print("#" + str(twosCom_binDec(fullCom[11:16], 5)))
 
+    elif ins == 0:
+        print("BR", end='')
+        if fullCom[4:5] == '1':
+            print("N", end='')
+
+        if fullCom[5:6] == '1':
+            print("Z", end='')
+
+        if fullCom[6:7] == '1':
+            print("P", end='')
+
+        print(" #" + str(twosCom_binDec(fullCom[7:16], 9)))
+
     elif ins == 2:
         print("LD", end=' ')
         # Still need to do twos complement
@@ -94,18 +107,17 @@ def BinaryToLC3(binNumIn, Typex):
         print("TRAP", end=' ')
         print(binaryToDecimal(fullCom[9:16]))
 
-    if(Typex == "Bin"):
+    if Typex == "Bin":
         print("\n1. for binary to LC3 again")
         print("2. To Go up a menu")
         nexCom: int = int(input('Enter your choice: '))
 
         if nexCom == 1:
             BinaryToLC3()
-
         else:
             printCompArch()
 
-    if(Typex == "Hex"):
+    if Typex == "Hex":
         print("\n1. for hex to LC3 again")
         print("2. To Go up a menu")
         nexCom: int = int(input('Enter your choice: '))
@@ -115,11 +127,13 @@ def BinaryToLC3(binNumIn, Typex):
         else:
             printCompArch()
 
+
 def HexToLC3():
     fullCom = input('Please enter your hex command: ')
     binIns = format(int(fullCom, 16), "016b")
     print(binIns)
     BinaryToLC3(binIns, 'Hex')
+
 
 def printCompArch():
     print("1. -- Convert binary to LC3 instruction --")
