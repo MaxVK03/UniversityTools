@@ -1,6 +1,4 @@
-from GeneralTools import decimalToBinary
 from GeneralTools import binaryToDecimal
-from GeneralTools import pcOff9
 from GeneralTools import twosCom_binDec
 
 
@@ -113,7 +111,8 @@ def BinaryToLC3(binNumIn, Typex):
         nexCom: int = int(input('Enter your choice: '))
 
         if nexCom == 1:
-            BinaryToLC3()
+            fullCom = input('Please enter your binary command: ')
+            BinaryToLC3(fullCom, 'Bin')
         else:
             printCompArch()
 
@@ -128,16 +127,22 @@ def BinaryToLC3(binNumIn, Typex):
             printCompArch()
 
 
-def HexToLC3():
-    fullCom = input('Please enter your hex command: ')
+def HexToLC3(hexIns):
+    type = 'conHex'
+    if len(hexIns) < 1:
+        fullCom = input('Please enter your hex command: ')
+        type = 'Hex'
+    else:
+        fullCom = hexIns
     binIns = format(int(fullCom, 16), "016b")
-    print(binIns)
-    BinaryToLC3(binIns, 'Hex')
+    BinaryToLC3(binIns, type)
 
 
 def printCompArch():
     print("1. -- Convert binary to LC3 instruction --")
     print("2. -- Convert hex to LC3 instruction --")
+    print("3. -- Convert full bin to LC3 instruction --")
+    print("4. -- Convert full Hex to LC3 instruction --")
     print()
     subChoice = input('Please enter your subject: ')
 
@@ -146,6 +151,34 @@ def printCompArch():
         fullCom = input('Please enter your binary command: ')
         BinaryToLC3(fullCom, "Bin")
 
-    if subChoice == '2':
+    elif subChoice == '2':
         print("Convert hex to LC3")
         HexToLC3()
+
+    if subChoice == '3':
+        subChoice = input('enter command. Enter xxxx to exit')
+        inps = []
+        while subChoice != 'xxxx':
+            inps.append(subChoice)
+            subChoice = input('enter command. Enter xxxx to exit')
+
+        for i in subChoice:
+            BinaryToLC3(i, 'conBin')
+
+    if subChoice == '4':
+        print("Enter your commands and press xxxx when finished")
+        cou = 1
+        subChoice = input(str(cou) + ":")
+        inps = []
+        while subChoice != 'xxxx':
+            inps.append(subChoice)
+            subChoice = input(str(cou) + ":")
+            cou += 1
+
+        for i in inps:
+            inp = i.replace('x', "")
+            if len(inp) == 4:
+                print(inp + " ", end=' ')
+                HexToLC3(inp)
+
+
