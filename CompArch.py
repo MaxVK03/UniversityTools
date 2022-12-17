@@ -3,8 +3,9 @@ from GeneralTools import binaryToDecimal
 from GeneralTools import pcOff9
 from GeneralTools import twosCom_binDec
 
-def BinaryToLC3():
-    fullCom = input('Please enter your binary command: ')
+
+def BinaryToLC3(binNumIn, Typex):
+    fullCom: str = binNumIn
     ins = int(str(fullCom)[:4])
     ins: int = binaryToDecimal(ins)
 
@@ -93,22 +94,43 @@ def BinaryToLC3():
         print("TRAP", end=' ')
         print(binaryToDecimal(fullCom[9:16]))
 
-    print("\n1. for binary to LC3 again")
-    print("2. To Go up a menu")
-    nexCom: int = int(input('Enter your choice: '))
+    if(Typex == "Bin"):
+        print("\n1. for binary to LC3 again")
+        print("2. To Go up a menu")
+        nexCom: int = int(input('Enter your choice: '))
 
-    if nexCom == 1:
-        BinaryToLC3()
+        if nexCom == 1:
+            BinaryToLC3()
 
-    else:
-        printCompArch()
+        else:
+            printCompArch()
 
+    if(Typex == "Hex"):
+        print("\n1. for hex to LC3 again")
+        print("2. To Go up a menu")
+        nexCom: int = int(input('Enter your choice: '))
+
+        if nexCom == 1:
+            HexToLC3()
+        else:
+            printCompArch()
+
+def HexToLC3():
+    fullCom = input('Please enter your hex command: ')
+    binIns = format(int(fullCom, 16), "016b")
+    print(binIns)
+    BinaryToLC3(binIns, 'Hex')
 
 def printCompArch():
     print("1. -- Convert binary to LC3 instruction --")
-
+    print("2. -- Convert hex to LC3 instruction --")
     subChoice = input('Please enter your subject: ')
 
     if subChoice == '1':
         print("Convert binary to LC3")
-        BinaryToLC3()
+        fullCom = input('Please enter your binary command: ')
+        BinaryToLC3(fullCom, "Bin")
+
+    if subChoice == '2':
+        print("Convert hex to LC3")
+        HexToLC3()

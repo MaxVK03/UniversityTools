@@ -25,6 +25,7 @@ def pcOff5(binnum):
         addNeg = int(binStr[9:16])
         return -265 + addNeg
 
+
 def twosCom_binDec(bin, digit):
     while len(bin) < digit:
         bin = '0' + bin
