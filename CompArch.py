@@ -102,8 +102,8 @@ def BinaryToLC3(binNumIn, Typex):
         print("#" + str(twosCom_binDec(fullCom[8:16], 9)))
 
     elif ins == 15:
-        print("TRAP", end=' ')
-        print(binaryToDecimal(fullCom[9:16]))
+        print("TRAP")
+        #print(binaryToDecimal(fullCom[9:15]))
 
     if Typex == "Bin":
         print("\n1. for binary to LC3 again")
@@ -165,6 +165,8 @@ def printCompArch():
         for i in subChoice:
             BinaryToLC3(i, 'conBin')
 
+    printCompArch()
+
     if subChoice == '4':
         print("Enter your commands and press xxxx when finished")
         cou = 1
@@ -180,5 +182,5 @@ def printCompArch():
             if len(inp) == 4:
                 print(inp + " ", end=' ')
                 HexToLC3(inp)
-
+    printCompArch()
 
