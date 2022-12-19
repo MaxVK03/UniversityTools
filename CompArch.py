@@ -102,7 +102,7 @@ def BinaryToLC3(binNumIn, Typex):
         print("#" + str(twosCom_binDec(fullCom[8:16], 9)))
 
     elif ins == 15:
-        print("TRAP")
+        print("TRAP Please check code x25 means halt")
         #print(binaryToDecimal(fullCom[9:15]))
 
     if Typex == "Bin":
@@ -139,7 +139,7 @@ def HexToLC3(hexIns):
 
 
 def printCompArch():
-    print("1. -- Convert full bin to LC3 instruction --")
+    print("1. -- Convert full bin to LC3 instruction Not Complete --")
     print("2. -- Convert full Hex to LC3 instruction --")
     subChoice = input('\nPlease enter your chosen application: ')
 
@@ -172,7 +172,7 @@ def printCompArch():
 
 
             if len(inp) == 4:
-                # print(inp + " ", end=' ')
+                print(inp + " ", end=' ')
 
                 try:
                     if(not reachHalt):
