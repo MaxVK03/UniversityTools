@@ -2,6 +2,11 @@ def decimalToBinary(n):
     return bin(n).replace("0b", "")
 
 
+def hexToDec(hexNum):
+    retNum = int(hexNum, 16)
+    return retNum
+
+
 def binaryToDecimal(binary):
     decimal, i = 0, 0
     while binary != 0:

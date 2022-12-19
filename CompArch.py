@@ -1,6 +1,6 @@
 from GeneralTools import binaryToDecimal
 from GeneralTools import twosCom_binDec
-
+from GeneralTools import hexToDec
 
 def BinaryToLC3(binNumIn, Typex):
     fullCom: str = binNumIn
@@ -56,7 +56,7 @@ def BinaryToLC3(binNumIn, Typex):
             print("R" + str(binaryToDecimal(int(str(fullCom)[13:16]))))
 
         elif int(str(fullCom)[10:11]) == 1:
-            print(" " + fullCom[11:16])
+            print("#" + str(binaryToDecimal(int(str(fullCom[11:16])))))
 
     elif ins == 6:
         print("LDR", end=' ')
@@ -139,48 +139,52 @@ def HexToLC3(hexIns):
 
 
 def printCompArch():
-    print("1. -- Convert binary to LC3 instruction --")
-    print("2. -- Convert hex to LC3 instruction --")
-    print("3. -- Convert full bin to LC3 instruction --")
-    print("4. -- Convert full Hex to LC3 instruction --")
-    print()
-    subChoice = input('Please enter your subject: ')
+    print("1. -- Convert full bin to LC3 instruction --")
+    print("2. -- Convert full Hex to LC3 instruction --")
+    subChoice = input('\nPlease enter your chosen application: ')
 
     if subChoice == '1':
-        print("Convert binary to LC3")
-        fullCom = input('Please enter your binary command: ')
-        BinaryToLC3(fullCom, "Bin")
-
-    elif subChoice == '2':
-        print("Convert hex to LC3")
-        HexToLC3()
-
-    if subChoice == '3':
-        subChoice = input('enter command. Enter xxxx to exit')
+        print("Enter in your instructions press xxxx to exit")
+        subChoice = input('')
         inps = []
         while subChoice != 'xxxx':
             inps.append(subChoice)
-            subChoice = input('enter command. Enter xxxx to exit')
+            subChoice = input('')
 
         for i in subChoice:
             BinaryToLC3(i, 'conBin')
 
-    printCompArch()
+        printCompArch()
 
-    if subChoice == '4':
+    if subChoice == '2':
         print("Enter your commands and press xxxx when finished")
         cou = 1
-        subChoice = input(str(cou) + ":")
+        subChoice = input()
         inps = []
+        reachHalt = False
         while subChoice != 'xxxx':
             inps.append(subChoice)
-            subChoice = input(str(cou) + ":")
+            subChoice = input()
             cou += 1
 
         for i in inps:
             inp = i.replace('x', "")
+
+
             if len(inp) == 4:
-                print(inp + " ", end=' ')
-                HexToLC3(inp)
+                # print(inp + " ", end=' ')
+
+                try:
+                    if(not reachHalt):
+                        HexToLC3(inp)
+                    else:
+                        print("x" + str(inp))
+                except ValueError:
+                    print("Please check your commands. It seems there is a error")
+
+                if(inp[0:1] == 'F'):
+                    if inp[2:4] == '25':
+                        reachHalt = True
+
     printCompArch()
 
