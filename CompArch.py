@@ -1,6 +1,7 @@
 from GeneralTools import binaryToDecimal
 from GeneralTools import twosCom_binDec
 from GeneralTools import hexToDec
+from DB_Manager import getCompArch
 
 def BinaryToLC3(binNumIn, Typex):
     fullCom: str = binNumIn
@@ -137,15 +138,32 @@ def HexToLC3(hexIns):
     binIns = format(int(fullCom, 16), "016b")
     BinaryToLC3(binIns, type)
 
+def getLC3Comm():
+    Commands = getCompArch()
+
+    for i, comms in enumerate(Commands):
+        print(str(i+1) + ". " + str(comms[1]))
+
+    LC3commChoice = input("Enter which command you would like: ")
+    print()
+    if(int(LC3commChoice) <= len(Commands[1])):
+        print(Commands[int(LC3commChoice)-1][2] + "\n")
+
+    else:
+        print("Invalid command")
 
 def printCompArch():
     print("1. -- Convert full bin to LC3 instruction Not Complete --")
     print("2. -- Convert full Hex to LC3 instruction --")
+    print("3. -- Get LC3 code snippets --")
     subChoice = input('\nPlease enter your chosen application: ')
+
 
     if subChoice == '1':
         print("Enter in your instructions press xxxx to exit")
         subChoice = input('')
+        if(subChoice == 'xxxx'):
+            printCompArch()
         inps = []
         while subChoice != 'xxxx':
             inps.append(subChoice)
@@ -186,5 +204,10 @@ def printCompArch():
                     if inp[2:4] == '25':
                         reachHalt = True
 
+    if subChoice == '3':
+        getLC3Comm()
+
     printCompArch()
 
+#print("Doing this")
+#printCompArch()

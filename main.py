@@ -1,5 +1,8 @@
 from MenuList import printMenu
-from GeneralTools import twosCom_binDec
 
-print(" ----- Welcome to UniTools ----- \n")
-printMenu()
+
+
+if __name__ == '__main__':
+    print("Hello user")
+    print(" ----- Welcome to UniTools ----- \n")
+    printMenu()

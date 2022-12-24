@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Language_Funcs" uuid="a8586ecd-8c49-45e1-81fa-58dd3a9d7e8a">
+    <data-source source="LOCAL" name="Code_Funcs" uuid="b4d7be86-4182-4023-abfd-71f5434a8aff">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/SCRIPTS/IMPROG_FUNCS</jdbc-url>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/DBHolder/Code_Funcs</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
